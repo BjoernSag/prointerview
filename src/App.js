@@ -169,7 +169,7 @@ function App() {
 					setSubmitting(false)
 				}, 400)
 			}}
-			><Form>
+			>{({ values, setFieldValue }) =><Form>
 					<label htmlFor="cropType">Crop Type</label>
 					<Field name="cropType" as="select" className="my-select-cropType">
 						<option value="Chinese Chestnut">Chinese Chestnut</option>
@@ -177,12 +177,16 @@ function App() {
 					</Field>
 
 					<label htmlFor="genetics">Genetics</label>
-					<Field name="genetics" as="select" className="my-select-genetics">
-						<option value="Auburn Super">Auburn Super</option>
-						<option value="Sleeping Giant">Sleeping Giant</option>
+          {values.cropType === 'Chinese Chestnut' ? 
+            	<Field name="genetics" as="select" className="my-select-genetics">
+              <option value="Auburn Super">Auburn Super</option>
+              <option value="Sleeping Giant">Sleeping Giant</option>
+            </Field> : <Field name="genetics" as="select" className="my-select-genetics">
 						<option value="Blackcomb">Blackcomb</option>
 						<option value="Cheakamus">Cheakamus</option>
 					</Field>
+          }
+					
 
 					<label htmlFor="inRowSpacing">Row Spacing</label>
 					<Field name="inRowSpacing" type="number" />
@@ -192,7 +196,7 @@ function App() {
 					<ErrorMessage name="rowLength" />
 
 					<button type="submit">Submit</button>
-				</Form>
+				</Form>}
   
 			</Formik> : <div></div>}</div>
 			{/* Returns the crops table*/}
