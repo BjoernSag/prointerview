@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 
 
@@ -29,19 +29,19 @@ use styled components to add some style and css to it
 
 The moonIcon is for a future night mode feature and doesn't have any functionality now*/
 function Navbar({isMobile}) {
-  return isMobile ? 
-    <ContainerDivMobile>
-        <h4>Business Name</h4>
-        <LinkDiv className="menu-item"><StyledLink >Analysis</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink >Development</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink >Financing</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink >Settings and admin</StyledLink></LinkDiv>
-    </ContainerDivMobile> : <ContainerDiv>
-    <LinkDiv className="menu-item"><StyledLink>Analysis</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink>Development</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink >Financing</StyledLink></LinkDiv>
-        <LinkDiv className="menu-item"><StyledLink>Settings and admin</StyledLink></LinkDiv>
-    </ContainerDiv>
+	return isMobile ? 
+		<ContainerDivMobile>
+			<h4>Business Name</h4>
+			<LinkDiv className="menu-item"><StyledLink >Analysis</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink >Development</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink >Financing</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink >Settings and admin</StyledLink></LinkDiv>
+		</ContainerDivMobile> : <ContainerDiv>
+			<LinkDiv className="menu-item"><StyledLink>Analysis</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink>Development</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink >Financing</StyledLink></LinkDiv>
+			<LinkDiv className="menu-item"><StyledLink>Settings and admin</StyledLink></LinkDiv>
+		</ContainerDiv>
 }
 
-export default Navbar;
+export default Navbar

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import Navbar from './Navbar'
 
 
@@ -15,10 +15,10 @@ height: 100vh;
 Use the navbar as child of that 
 Check if we are on a mobile or not and return the burger menu if we are.*/
 function Sidebar({isMobile}) {
-  return  <DivDesktop>
-      <h4>Business name</h4>
-        <Navbar isMobile={isMobile}/>
-      </DivDesktop>
+	return  <DivDesktop>
+		<h4>Business name</h4>
+		<Navbar isMobile={isMobile}/>
+	</DivDesktop>
 }
 
-export default Sidebar;
+export default Sidebar

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Menu from 'react-burger-menu/lib/menus/slide';
+import React from 'react'
+import styled from 'styled-components'
+import Menu from 'react-burger-menu/lib/menus/slide'
 import Navbar from './Navbar'
 
 
@@ -115,13 +115,13 @@ display: flex;
 Use the navbar as child of that 
 Check if we are on a mobile or not and return the burger menu if we are.*/
 function Header({isMobile}) {
-  return <HeaderDiv>
-       {/* Set menu width for mobile to 50%. this is the menu that opens if you click the burger icon */}
-        <Menu width= {'50%'}>
-            <Navbar isMobile={isMobile}/>
-        </Menu>
-        <RightItem><RightItemText>Business name</RightItemText></RightItem>
-      </HeaderDiv>
+	return <HeaderDiv>
+		{/* Set menu width for mobile to 50%. this is the menu that opens if you click the burger icon */}
+		<Menu width= {'50%'}>
+			<Navbar isMobile={isMobile}/>
+		</Menu>
+		<RightItem><RightItemText>Business name</RightItemText></RightItem>
+	</HeaderDiv>
 }
 
-export default Header;
+export default Header
