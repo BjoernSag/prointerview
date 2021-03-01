@@ -1,5 +1,7 @@
 Added to this project is the figma project: https://www.figma.com/file/ece5VdyEtpeiQTBRljO7xO/Propagate-Project
 
+It also has a cypress.io integration, so feel free to test that by writing npm run cypress:open
+
 The project is based on the following problem:
 
 
