@@ -51,7 +51,6 @@ For the purpose of this assignment, just mock the data by hard-coding the JSON o
     - Don't worry about getting pixel perfect implementation.
     - Don't worry about implementing the side-nav unless you have extra time.
 - You can assume every crop type has only one genetic if you want to simplify the assignment. In  this case there is no need to have dropdowns for the genetics column, it can just be uneditable text.
-- If you have questions, email aaron@propagateventures.com
 
 # Getting Started with Create React App
 
