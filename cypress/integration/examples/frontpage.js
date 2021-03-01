@@ -3,11 +3,21 @@
 
 
 /* Testing different viewports -- See presets: https://docs.cypress.io/api/commands/viewport.html#Syntax  */
-const sizes = ['iphone-6', 'ipad-2', [1024, 768]]
+const sizes = ['iphone-6', 'iphone-x' , 'samsung-note9']
 
 describe('FirstPage ', function() {
+	beforeEach(function() {
+		cy.visit('http://localhost:3000')
+	})
+	it('front page can be opened', function() {
+		cy.contains('Business')
+	})
+})
+
+describe('FirstPageMobile ', function() {
 	sizes.forEach((size) => {
 		beforeEach(function() {
+			cy.viewport(size)
 			cy.visit('http://localhost:3000')
 		})
 		it('front page can be opened', function() {
@@ -21,7 +31,7 @@ describe('FirstPage ', function() {
 			cy.get('.bm-burger-button > button').click()
 			cy.contains('Analysis')
 			cy.get('.bm-cross-button > button').click()
-			cy.contains('Business')
+			cy.contains('Rows')
 		})
 	})
 })

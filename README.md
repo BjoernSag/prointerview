@@ -1,58 +1,22 @@
+The tools used for this project is: React, JavaScript, Cypress.io, Styled-components, react-virtualized, formik, react-responsive, and more
+
 Added to this project is the figma project: https://www.figma.com/file/ece5VdyEtpeiQTBRljO7xO/Propagate-Project
 
 It also has a cypress.io integration, so feel free to test that by writing npm run start and then in a seperate terminal write npm run cypress:open
 
-The project is based on the following problem:
+It has both a mobile and a desktop integration. I always start with mobile first and I spent a little extra effort to design and implement a mobile version.
+
+The table runs with a library called react-virtualized, which is a virtualization library that would make the data run a little faster. In our mockup it doesn't make a difference, but it does when the dataset is larger.
+
+The table also has a mobile mode and a desktop mode, and the mobile mode has swipe integrated.
+
+We use media queries to allow for mobile and desktop modes. We use a library called react-responsive because that allows us to show the different views as components, and I find that easier to work with when it comes to react, as everything else is components.
+
+We use formik for our forms to add new rows to the table, because we want to be easily able to add validation using the yup library
 
 
+This project is made with Create-react-app. Information on how to run it is underneath:
 
-Thank you for your interest in the senior full-stack engineer role at Propagate Ventures! The next step in our interview process is the following take-home coding assignment. Even though our ideal candidate has some familiarity with back-end development as well, this interview is focused on the front end since that's where most of the initial work will be.
-
-Your mission, if you choose to accept it, is to implement a React component that shows a table of rows of trees on a farm.
-
-And assume you'll have access to two API endpoints that return JSON payloads with the following forms:
-
-**Rows API:**
-
-```jsx
-[
-	{ id: 1, field_id: 1, crop_type_id: 1, genetics: "Auburn Super", in_row_spacing: 12, row_length: 500, tree_count: 42 },
-	{ id: 2, field_id: 1, crop_type_id: 1, genetics: "Sleeping Giant", in_row_spacing: 12, row_length: 500, tree_count: 42 },
-	{ id: 3, field_id: 1, crop_type_id: 2, genetics: "Blackcomb", in_row_spacing: 6, row_length: 300, tree_count: 50 },
-	{ id: 4, field_id: 1, crop_type_id: 2, genetics: "Cheakamus", in_row_spacing: 6, row_length: 300, tree_count: 50 }
-]
-```
-
-**Crop Types API:**
-
-```jsx
-[
-	{ id: 1, name: "Chinese Chestnut", genetics: ["Auburn Super", "Sleeping Giant"] },
-	{ id: 2, name: "Blackcurrent", genetics: ["Blackcomb", "Cheakamus"] }
-]
-```
-
-For the purpose of this assignment, just mock the data by hard-coding the JSON or using a mock library.
-
-## Basic Requirements:
-
-- Display both the "Rows" and "Genetics" tables using React.
-- The Genetics table should have one line for each crop genetic, and show the total row length and tree count for that genetic.
-- Clicking "New Row +" should add a new row with a dropdowns for Crop Type and Genetics, and inputs for the In Row Spacing and Row Length. Tree Count can be calculated automatically from the spacing and row length by dividing row length by tree count and rounding up.
-- Come prepared to demo your work and discuss next steps and potential improvements.
-
-## Technical Requirements:
-
-- Use React hooks (not class components)
-- Follow React best practices and be prepared to explain your rationale
-- Feel free to use create-react-app or something similar to get started
-
-## Notes:
-
-- There is no need to get everything in the mockup implemented. We only expect you to spend 2-3 hours on this assignment. In particular:
-    - Don't worry about getting pixel perfect implementation.
-    - Don't worry about implementing the side-nav unless you have extra time.
-- You can assume every crop type has only one genetic if you want to simplify the assignment. In  this case there is no need to have dropdowns for the genetics column, it can just be uneditable text.
 
 # Getting Started with Create React App
 

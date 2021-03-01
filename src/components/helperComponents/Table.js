@@ -66,8 +66,6 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
     
 	}, [list])
 
-	console.log('listen', list,'active', activeColumn)
-
 	const StyledTable = styled.div`
   display:relative;
   padding-top: ${isMobile ? '20px' : '0'}
@@ -93,13 +91,7 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 		textAlign: 'center',
 	}
 
-	/* A function that changes the style for the rendered rows, so that every other column
-  is white and every other is another colour */
-	const rowStyle = (e) => {
-		return {height: '50px'}
-	}
-
-	//Variables that changes during scrolling 
+	//Variables that changes during scrolling. Set it here instead of state to avoid reload 
 	let prevScroll = null
 	/* Detect when the user is scrolling */
 	const userScrolls = (scrollFromTop) => {
@@ -129,7 +121,9 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 				index = i
 			}
 		}
-
+		/* On input change the active column(the column that is shown) and also set the scrollto
+    scrollTo is a method from app.js, we set it here so we can remember where we have scrolled to as 
+    the app reloads */
 		if(input==='right') {
 			if(index===allColumns.length-1) index=-1
 			setActiveColumn(allColumns[index+1])
@@ -199,7 +193,6 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 													style={tableStyle}
 													sort={(e) => sort(e)}
 													sortBy={sortByState}
-													rowStyle={(e) => rowStyle(e)}
 													sortDirection={sortDirection}
 													//scroll and swipe, makes sure to remember the scroll position on swipe left or right
 													onScroll={(e) => {
@@ -251,7 +244,6 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 										headerStyle={headerStyle}
 										style={tableStyle}
 										sort={(e) => sort(e)}
-										rowStyle={(e) => rowStyle(e)}
 										sortBy={sortByState}
 										sortDirection={sortDirection}
 									>
@@ -284,10 +276,9 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 									headerStyle={headerStyle}
 									style={tableStyle}
 									sort={(e) => sort(e)}
-									rowStyle={(e) => rowStyle(e)}
 									sortBy={sortByState}
 									sortDirection={sortDirection}
-									//On row click dispatch a new page to state so it changes what is shown
+									//map through all the columns to show them all
 								>
 									{allColumns.map(i => 
 										<Column label={i}

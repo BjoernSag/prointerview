@@ -43,10 +43,10 @@ const StyledNavigationButtonLeft = styled.img`
 `
 
 const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueValues}) => {
-	const [sortByState, setsortByState] = useState('id')
-	const [sortDirection, setSortDirection] = useState('DESC')
+	const [sortByState, setsortByState] = useState('cropType')
+	const [sortDirection, setSortDirection] = useState('ASC')
 	const [sortedList, setSortedList] = useState(list)
-	const [activeColumn, setActiveColumn] = useState('id')
+	const [activeColumn, setActiveColumn] = useState('genetics')
 	const [prevColumn, setPrevColumn] = useState(null)
 	const [mobileView, setMobileView] = useState(isMobile)
 	const [allColumns, setAllColumns] = useState(uniqueValues)
@@ -66,7 +66,6 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
     
 	}, [list])
 
-	console.log('listen', list,'active', activeColumn)
 
 	const StyledTable = styled.div`
   display:relative;
@@ -93,14 +92,7 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 		textAlign: 'center',
 	}
 
-	/* A function that changes the style for the rendered rows, so that every other column
-  is white and every other is another colour */
-	const rowStyle = (e) => {
-		console.log('eee', e)
-		return {height: '50px'}
-	}
-
-	//Variables that changes during scrolling 
+	//Variables that changes during scrolling. Set it here instead of state to avoid reload 
 	let prevScroll = null
 	/* Detect when the user is scrolling */
 	const userScrolls = (scrollFromTop) => {
@@ -130,7 +122,9 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 				index = i
 			}
 		}
-
+		/* On input change the active column(the column that is shown) and also set the scrollto
+    scrollTo is a method from app.js, we set it here so we can remember where we have scrolled to as 
+    the app reloads */
 		if(input==='right') {
 			if(index===allColumns.length-1) index=-1
 			setActiveColumn(allColumns[index+1])
@@ -203,7 +197,7 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 												<legend>{dataName}</legend>
 												<Table id="table"
 													width={width-35}
-													height={allColumns.length*50}
+													height={allColumns.length*60}
 													headerHeight={70}
 													rowHeight={50}
 													rowCount={sortedList.length}
@@ -212,7 +206,6 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 													style={tableStyle}
 													sort={(e) => sort(e)}
 													sortBy={sortByState}
-													rowStyle={(e) => rowStyle(e)}
 													sortDirection={sortDirection}
 													//scroll and swipe, makes sure to remember the scroll position on swipe left or right
 													onScroll={(e) => {
@@ -228,8 +221,8 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 													scrollTop={prevColumn!==null ? prevColumn : scrollToValue}
 												>
 													<Column
-														label='Id'
-														dataKey='id'
+														label='genetics'
+														dataKey='genetics'
 														width={200}
             
 													/>
@@ -257,7 +250,7 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 									<legend>{dataName}</legend>
 									<Table
 										width={allColumns.length*150}
-										height={allColumns.length*50}
+										height={allColumns.length*60}
 										headerHeight={70}
 										rowHeight={50}
 										rowCount={sortedList.length}
@@ -265,9 +258,9 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 										headerStyle={headerStyle}
 										style={tableStyle}
 										sort={(e) => sort(e)}
-										rowStyle={(e) => rowStyle(e)}
 										sortBy={sortByState}
 										sortDirection={sortDirection}
+										//map through all the columns to show them all
 									>
 										{allColumns.map(i => 
 											<Column label={i}
@@ -290,7 +283,7 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 								<legend>{dataName}</legend>
 								<Table
 									width={(window.screen.width*0.8)-50}
-									height={allColumns.length * 50}
+									height={allColumns.length * 60}
 									headerHeight={70}
 									rowHeight={50}
 									rowCount={sortedList.length}
@@ -298,10 +291,9 @@ const  TableView = ({isMobile, list, dataName, scrollToValue, scrollTo, uniqueVa
 									headerStyle={headerStyle}
 									style={tableStyle}
 									sort={(e) => sort(e)}
-									rowStyle={(e) => rowStyle(e)}
 									sortBy={sortByState}
 									sortDirection={sortDirection}
-									//On row click dispatch a new page to state so it changes what is shown
+									//map through all the columns to show them all
 								>
 									{allColumns.map(i => 
 										<Column label={i}
