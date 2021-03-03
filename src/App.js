@@ -135,6 +135,8 @@ function App() {
     We use the formik form and do basic validation to ensure that the numbers are greater than 1.
     We don't want negative integers
 
+	Use values variable to ensure that we show dynamic names in the second field, so 
+	that we don't create any pairings that should not exist
     Onsubmit update both the tables with new values
   */
 	const desktopContent = (isMobile) => <DesktopContent><Sidebar isMobile={isMobile}/>
