@@ -2,7 +2,7 @@ P.S: Before you can run this project, npm needs to be installed. Run npm install
 
 The tools used for this project is: React, JavaScript, Cypress.io, Styled-components, react-virtualized, formik, react-responsive, and more
 
-Added to this project is the figma project: https://www.figma.com/file/ece5VdyEtpeiQTBRljO7xO/Propagate-Project
+Added to this project is the figma project: https://www.figma.com/file/ece5VdyEtpeiQTBRljO7xO/Prop-Project?node-id=0%3A1
 
 It also has a cypress.io integration, so feel free to test that by writing npm run start and then in a seperate terminal write npm run cypress:open
 
